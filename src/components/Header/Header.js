@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 import './Header.scss';
 
-import { ReactComponent as Logo } from '../../assets/images/crown.svg';
+import Logo from '../../assets/images/logo-gold.png';
 
 const Header = () => {
 
     return (
         <header className="header">
             <Link className="logo-container" to="/">
-                <Logo className="logo"/>
+                <img className="logo" src={Logo}/>
             </Link>
             <div className="options">
                 <Link className="option" to="/shop">SHOP</Link>
