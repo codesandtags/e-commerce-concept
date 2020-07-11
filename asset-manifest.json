@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.fac0820e.chunk.css",
-    "main.js": "/static/js/main.3b107fae.chunk.js",
-    "main.js.map": "/static/js/main.3b107fae.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d864ef58.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d864ef58.js.map",
-    "static/js/2.bcabfc80.chunk.js": "/static/js/2.bcabfc80.chunk.js",
-    "static/js/2.bcabfc80.chunk.js.map": "/static/js/2.bcabfc80.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.de761fb1af956033357d58d1af3bc0c1.js": "/precache-manifest.de761fb1af956033357d58d1af3bc0c1.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.fac0820e.chunk.css.map": "/static/css/main.fac0820e.chunk.css.map",
-    "static/js/2.bcabfc80.chunk.js.LICENSE.txt": "/static/js/2.bcabfc80.chunk.js.LICENSE.txt",
-    "static/media/logo-blue.png": "/static/media/logo-blue.48814db1.png"
+    "main.css": "/e-commerce-concept/static/css/main.fac0820e.chunk.css",
+    "main.js": "/e-commerce-concept/static/js/main.5507ec47.chunk.js",
+    "main.js.map": "/e-commerce-concept/static/js/main.5507ec47.chunk.js.map",
+    "runtime-main.js": "/e-commerce-concept/static/js/runtime-main.2b7fa3b5.js",
+    "runtime-main.js.map": "/e-commerce-concept/static/js/runtime-main.2b7fa3b5.js.map",
+    "static/js/2.bcabfc80.chunk.js": "/e-commerce-concept/static/js/2.bcabfc80.chunk.js",
+    "static/js/2.bcabfc80.chunk.js.map": "/e-commerce-concept/static/js/2.bcabfc80.chunk.js.map",
+    "index.html": "/e-commerce-concept/index.html",
+    "precache-manifest.192c01a8c1b905a5944930761d66269b.js": "/e-commerce-concept/precache-manifest.192c01a8c1b905a5944930761d66269b.js",
+    "service-worker.js": "/e-commerce-concept/service-worker.js",
+    "static/css/main.fac0820e.chunk.css.map": "/e-commerce-concept/static/css/main.fac0820e.chunk.css.map",
+    "static/js/2.bcabfc80.chunk.js.LICENSE.txt": "/e-commerce-concept/static/js/2.bcabfc80.chunk.js.LICENSE.txt",
+    "static/media/logo-blue.png": "/e-commerce-concept/static/media/logo-blue.48814db1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d864ef58.js",
+    "static/js/runtime-main.2b7fa3b5.js",
     "static/js/2.bcabfc80.chunk.js",
     "static/css/main.fac0820e.chunk.css",
-    "static/js/main.3b107fae.chunk.js"
+    "static/js/main.5507ec47.chunk.js"
   ]
 }
