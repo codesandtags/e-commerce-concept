@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Header.scss';
 
-import Logo from '../../assets/images/logo-gold.png';
+import Logo from '../../assets/images/logo-blue.png';
 
 const Header = () => {
 
@@ -11,6 +11,7 @@ const Header = () => {
         <header className="header">
             <Link className="logo-container" to="/">
                 <img className="logo" src={Logo}/>
+                Cloting Center
             </Link>
             <div className="options">
                 <Link className="option" to="/shop">SHOP</Link>
