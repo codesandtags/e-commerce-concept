@@ -5,7 +5,19 @@ import './Header.scss';
 
 import Logo from '../../assets/images/logo-blue.png';
 
-const Header = () => {
+import { auth } from '../../firebase/firebase.utils';
+
+const Header = ({currentUser}) => {
+
+    const getSignInLink = () => {
+        if (currentUser) {
+            return (
+                <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
+            );
+        }
+
+        return <Link className="option" to="/sign-in">SIGN IN</Link>;
+    }
 
     return (
         <header className="header">
@@ -16,7 +28,7 @@ const Header = () => {
             <div className="options">
                 <Link className="option" to="/shop">SHOP</Link>
                 <Link className="option" to="/contact">CONTACT</Link>
-                <Link className="option" to="/sign-in">SIGN IN</Link>
+                {getSignInLink()}
             </div>
         </header>
     );
