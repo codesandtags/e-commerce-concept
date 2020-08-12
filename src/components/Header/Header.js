@@ -9,10 +9,14 @@ import { auth } from '../../firebase/firebase.utils';
 
 const Header = ({currentUser}) => {
 
+    const onSignOut = async () => {
+        await auth.signOut();
+    };
+
     const getSignInLink = () => {
         if (currentUser) {
             return (
-                <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
+                <div className="option" onClick={onSignOut}>SIGN OUT</div>
             );
         }
 

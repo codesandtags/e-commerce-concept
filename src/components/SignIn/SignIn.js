@@ -3,17 +3,26 @@ import React, { useState } from 'react';
 import './SignIn.scss';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import {
+    auth,
+    signInWithGithub,
+    signInWithGoogle
+} from '../../firebase/firebase.utils';
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        debugger;
-        console.log(email);
-        console.log(password);
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            setEmail('');
+            setPassword('');
+        } catch(error) {
+            alert('Upppss wrong email or password');
+        }
     };
 
     return (
@@ -45,6 +54,12 @@ const SignIn = () => {
                                   isGoogleSignIn={true}
                     >
                         Sign in with Google
+                    </CustomButton>
+                    <CustomButton type='button'
+                                  onClick={signInWithGithub}
+                                  isGoogleSignIn={true}
+                    >
+                        Sign in with Github
                     </CustomButton>
                 </div>
             </form>

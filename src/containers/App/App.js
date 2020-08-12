@@ -7,7 +7,7 @@ import HomePage from '../Homepage/HomePage';
 import Header from '../../components/Header/Header';
 import SignInAndSignUp from '../SingInAndSignUp/SignInAndSignUp';
 
-import { auth } from '../../firebase/firebase.utils';
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 function App() {
 
@@ -15,9 +15,20 @@ function App() {
 
     useEffect(() => {
         console.log('Calling auth...');
-        const authSubscription = auth.onAuthStateChanged(user => {
-            console.log('User logged ', user);
-            setCurrentUser(user);
+        const authSubscription = auth.onAuthStateChanged(async userAuth => {
+            if (userAuth) {
+                console.log('User logged ', userAuth);
+                const userRef = await createUserProfileDocument(userAuth);
+
+                userRef.onSnapshot(snapShot => {
+                    setCurrentUser({
+                        id: snapShot.id,
+                        ...snapShot.data()
+                    });
+                });
+            }
+
+            setCurrentUser(userAuth)
         });
 
         return () => {
@@ -30,9 +41,9 @@ function App() {
         <div className="App">
             <Header currentUser={currentUser}/>
             <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/shop" component={ShopPage} />
-                <Route path="/sign-in" component={SignInAndSignUp} />
+                <Route exact path="/" component={HomePage}/>
+                <Route path="/shop" component={ShopPage}/>
+                <Route path="/sign-in" component={SignInAndSignUp}/>
             </Switch>
         </div>
     );
