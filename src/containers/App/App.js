@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.scss';
 import ShopPage from '../Shop/ShopPage';
@@ -8,10 +8,15 @@ import Header from '../../components/Header/Header';
 import SignInAndSignUp from '../SingInAndSignUp/SignInAndSignUp';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentUser } from '../../store/user/user.actions';
 
 function App() {
-
-    const [currentUser, setCurrentUser] = useState(null);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => {
+        console.log('State => ', state);
+        return state.user;
+    });
 
     useEffect(() => {
         console.log('Calling auth...');
@@ -21,10 +26,10 @@ function App() {
                 const userRef = await createUserProfileDocument(userAuth);
 
                 userRef.onSnapshot(snapShot => {
-                    setCurrentUser({
+                    dispatch(setCurrentUser({
                         id: snapShot.id,
                         ...snapShot.data()
-                    });
+                    }))
                 });
             }
 
@@ -39,11 +44,13 @@ function App() {
 
     return (
         <div className="App">
-            <Header currentUser={currentUser}/>
+            <Header/>
             <Switch>
                 <Route exact path="/" component={HomePage}/>
                 <Route path="/shop" component={ShopPage}/>
-                <Route path="/sign-in" component={SignInAndSignUp}/>
+                <Route exact path="/sign-in" render={() => {
+                    return (user.currentUser) ? <Redirect to="/" /> : <SignInAndSignUp />
+                }}/>
             </Switch>
         </div>
     );

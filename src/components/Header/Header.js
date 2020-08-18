@@ -6,15 +6,22 @@ import './Header.scss';
 import Logo from '../../assets/images/logo-blue.png';
 
 import { auth } from '../../firebase/firebase.utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentUser } from '../../store/user/user.actions';
 
-const Header = ({currentUser}) => {
-
+const Header = () => {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => {
+        console.log('State => ', state);
+        return state.user;
+    });
     const onSignOut = async () => {
         await auth.signOut();
+        dispatch(setCurrentUser(null));
     };
 
     const getSignInLink = () => {
-        if (currentUser) {
+        if (user.currentUser) {
             return (
                 <div className="option" onClick={onSignOut}>SIGN OUT</div>
             );
