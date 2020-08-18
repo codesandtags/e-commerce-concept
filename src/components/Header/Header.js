@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../../store/user/user.actions';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
+import { selectCartHidden } from '../../store/cart/cart.selector';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -17,9 +18,7 @@ const Header = () => {
         console.log('State => ', state);
         return state.user;
     });
-    const cart = useSelector((state) => {
-        return state.cart;
-    });
+    const cartHidden = useSelector(selectCartHidden);
 
     const onSignOut = async () => {
         await auth.signOut();
@@ -52,7 +51,7 @@ const Header = () => {
                 {getSignInLink()}
                 {getShoppingIcon()}
             </div>
-            { !cart.hidden ? <CartDropdown/> : null}
+            { !cartHidden ? <CartDropdown/> : null}
         </header>
     );
 }

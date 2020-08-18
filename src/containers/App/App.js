@@ -6,6 +6,7 @@ import ShopPage from '../Shop/ShopPage';
 import HomePage from '../Homepage/HomePage';
 import Header from '../../components/Header/Header';
 import SignInAndSignUp from '../SingInAndSignUp/SignInAndSignUp';
+import { CheckoutPage } from '../Checkout/CheckoutPage';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,6 +49,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={HomePage}/>
                 <Route path="/shop" component={ShopPage}/>
+                <Route exact path='/checkout' component={CheckoutPage} />
                 <Route exact path="/sign-in" render={() => {
                     return (user.currentUser) ? <Redirect to="/" /> : <SignInAndSignUp />
                 }}/>
