@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/e-commerce-concept/static/css/main.fac0820e.chunk.css",
-    "main.js": "/e-commerce-concept/static/js/main.5507ec47.chunk.js",
-    "main.js.map": "/e-commerce-concept/static/js/main.5507ec47.chunk.js.map",
+    "main.css": "/e-commerce-concept/static/css/main.1a99cf46.chunk.css",
+    "main.js": "/e-commerce-concept/static/js/main.90c0b613.chunk.js",
+    "main.js.map": "/e-commerce-concept/static/js/main.90c0b613.chunk.js.map",
     "runtime-main.js": "/e-commerce-concept/static/js/runtime-main.2b7fa3b5.js",
     "runtime-main.js.map": "/e-commerce-concept/static/js/runtime-main.2b7fa3b5.js.map",
-    "static/js/2.bcabfc80.chunk.js": "/e-commerce-concept/static/js/2.bcabfc80.chunk.js",
-    "static/js/2.bcabfc80.chunk.js.map": "/e-commerce-concept/static/js/2.bcabfc80.chunk.js.map",
+    "static/js/2.4e6985a9.chunk.js": "/e-commerce-concept/static/js/2.4e6985a9.chunk.js",
+    "static/js/2.4e6985a9.chunk.js.map": "/e-commerce-concept/static/js/2.4e6985a9.chunk.js.map",
     "index.html": "/e-commerce-concept/index.html",
-    "precache-manifest.192c01a8c1b905a5944930761d66269b.js": "/e-commerce-concept/precache-manifest.192c01a8c1b905a5944930761d66269b.js",
+    "precache-manifest.5bcae3c98d6e16cca898de115839cb76.js": "/e-commerce-concept/precache-manifest.5bcae3c98d6e16cca898de115839cb76.js",
     "service-worker.js": "/e-commerce-concept/service-worker.js",
-    "static/css/main.fac0820e.chunk.css.map": "/e-commerce-concept/static/css/main.fac0820e.chunk.css.map",
-    "static/js/2.bcabfc80.chunk.js.LICENSE.txt": "/e-commerce-concept/static/js/2.bcabfc80.chunk.js.LICENSE.txt",
-    "static/media/logo-blue.png": "/e-commerce-concept/static/media/logo-blue.48814db1.png"
+    "static/css/main.1a99cf46.chunk.css.map": "/e-commerce-concept/static/css/main.1a99cf46.chunk.css.map",
+    "static/js/2.4e6985a9.chunk.js.LICENSE.txt": "/e-commerce-concept/static/js/2.4e6985a9.chunk.js.LICENSE.txt",
+    "static/media/logo-blue.png": "/e-commerce-concept/static/media/logo-blue.48814db1.png",
+    "static/media/shopping-bag.30f07071.svg": "/e-commerce-concept/static/media/shopping-bag.30f07071.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2b7fa3b5.js",
-    "static/js/2.bcabfc80.chunk.js",
-    "static/css/main.fac0820e.chunk.css",
-    "static/js/main.5507ec47.chunk.js"
+    "static/js/2.4e6985a9.chunk.js",
+    "static/css/main.1a99cf46.chunk.css",
+    "static/js/main.90c0b613.chunk.js"
   ]
 }
