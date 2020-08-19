@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.scss';
 import ShopPage from '../Shop/ShopPage';
@@ -44,17 +44,19 @@ function App() {
     }, [setCurrentUser]);
 
     return (
-        <div className="App">
-            <Header/>
-            <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route path="/shop" component={ShopPage}/>
-                <Route exact path='/checkout' component={CheckoutPage} />
-                <Route exact path="/sign-in" render={() => {
-                    return (user.currentUser) ? <Redirect to="/" /> : <SignInAndSignUp />
-                }}/>
-            </Switch>
-        </div>
+        <HashRouter basename="/">
+            <div className="App">
+                <Header/>
+                <Switch>
+                    <Route exact path="/" component={HomePage}/>
+                    <Route path="/shop" component={ShopPage}/>
+                    <Route exact path='/checkout' component={CheckoutPage}/>
+                    <Route exact path="/sign-in" render={() => {
+                        return (user.currentUser) ? <Redirect to="/"/> : <SignInAndSignUp/>
+                    }}/>
+                </Switch>
+            </div>
+        </HashRouter>
     );
 }
 
