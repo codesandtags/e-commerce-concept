@@ -15,7 +15,6 @@ import { setCurrentUser } from '../../store/user/user.actions';
 function App() {
     const dispatch = useDispatch();
     const user = useSelector((state) => {
-        console.log('State => ', state);
         return state.user;
     });
 

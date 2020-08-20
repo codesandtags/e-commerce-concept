@@ -1,12 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import './CollectionOverview.scss';
+import './CollectionsOverview.scss';
 import { useSelector } from 'react-redux';
 import { selectCollectionsForPreview } from '../../store/shop/shop.selector';
 import CollectionPreview from '../CollectionPreview/CollectionPreview';
 
-const CollectionOverview = ({ title, items }) => {
+const CollectionsOverview = ({ title, items }) => {
     const collections = useSelector(selectCollectionsForPreview);
 
     return (
@@ -18,4 +18,4 @@ const CollectionOverview = ({ title, items }) => {
     );
 }
 
-export default withRouter(CollectionOverview);
+export default withRouter(CollectionsOverview);
