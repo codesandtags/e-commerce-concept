@@ -19,17 +19,15 @@ function App() {
     });
 
     useEffect(() => {
-        console.log('Calling auth...');
         const authSubscription = auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
-                console.log('User logged ', userAuth);
                 const userRef = await createUserProfileDocument(userAuth);
 
                 userRef.onSnapshot(snapShot => {
                     dispatch(setCurrentUser({
                         id: snapShot.id,
                         ...snapShot.data()
-                    }))
+                    }), [setCurrentUser])
                 });
             }
 

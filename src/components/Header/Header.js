@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import './Header.scss';
 
 import Logo from '../../assets/images/logo-blue.png';
 
@@ -11,11 +8,17 @@ import { setCurrentUser } from '../../store/user/user.actions';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
 import { selectCartHidden } from '../../store/cart/cart.selector';
+import {
+    AppLogo,
+    HeaderContainer,
+    LogoContainer,
+    OptionLink,
+    OptionsContainer
+} from './Header.styles';
 
 const Header = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => {
-        console.log('State => ', state);
         return state.user;
     });
     const cartHidden = useSelector(selectCartHidden);
@@ -28,31 +31,31 @@ const Header = () => {
     const getSignInLink = () => {
         if (user.currentUser) {
             return (
-                <div className="option" onClick={onSignOut}>SIGN OUT</div>
+                <OptionLink onClick={onSignOut}>SIGN OUT</OptionLink>
             );
         }
 
-        return <Link className="option" to="/sign-in">SIGN IN</Link>;
+        return <OptionLink to="/sign-in">SIGN IN</OptionLink>;
     }
 
     const getShoppingIcon = () => {
-        return <CartIcon />
+        return <CartIcon/>
     }
 
     return (
-        <header className="header">
-            <Link className="logo-container" to="/">
-                <img className="logo" src={Logo} alt="Clothing Center"/>
+        <HeaderContainer>
+            <LogoContainer to='/'>
+                <AppLogo src={Logo} alt="Clothing Center"/>
                 Clothing Center
-            </Link>
-            <div className="options">
-                <Link className="option" to="/shop">SHOP</Link>
-                <Link className="option" to="/contact">CONTACT</Link>
+            </LogoContainer>
+            <OptionsContainer>
+                <OptionLink to='/shop'>SHOP</OptionLink>
+                <OptionLink to="/contact">CONTACT</OptionLink>
                 {getSignInLink()}
                 {getShoppingIcon()}
-            </div>
-            { !cartHidden ? <CartDropdown/> : null}
-        </header>
+            </OptionsContainer>
+            {!cartHidden ? <CartDropdown/> : null}
+        </HeaderContainer>
     );
 }
 
