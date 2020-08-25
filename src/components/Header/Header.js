@@ -31,7 +31,7 @@ const Header = () => {
     const getSignInLink = () => {
         if (user.currentUser) {
             return (
-                <OptionLink onClick={onSignOut}>SIGN OUT</OptionLink>
+                <OptionLink  as='div' onClick={onSignOut}>SIGN OUT</OptionLink>
             );
         }
 

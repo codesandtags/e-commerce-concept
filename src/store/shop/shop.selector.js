@@ -9,9 +9,17 @@ export const selectCollections = memoize(state => {
 export const selectCollectionsForPreview = state => {
     const collections = selectCollections(state);
 
-    return Object.keys(collections).map(key => collections[key]);
+    return collections ? Object.keys(collections).map(key => collections[key]) : [];
 }
 
 export const selectCollection = (state, collectionUrlParam) => {
-    return selectCollections(state)[collectionUrlParam]
+    return selectCollections(state) ? selectCollections(state)[collectionUrlParam] : null;
+};
+
+export const selectIsCollectionFetching = state => {
+    return state.shop.isFetching;
+};
+
+export const selectIsCollectionsLoaded = state => {
+    return !!state.shop.collections;
 };

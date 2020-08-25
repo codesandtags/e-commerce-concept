@@ -8,15 +8,21 @@ import Header from '../../components/Header/Header';
 import SignInAndSignUp from '../SingInAndSignUp/SignInAndSignUp';
 import { CheckoutPage } from '../Checkout/CheckoutPage';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import {
+    addCollectionAndDocuments,
+    auth,
+    createUserProfileDocument
+} from '../../firebase/firebase.utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../../store/user/user.actions';
+import { selectCollectionsForPreview } from '../../store/shop/shop.selector';
 
 function App() {
     const dispatch = useDispatch();
     const user = useSelector((state) => {
         return state.user;
     });
+    const collection = useSelector(selectCollectionsForPreview);
 
     useEffect(() => {
         const authSubscription = auth.onAuthStateChanged(async userAuth => {
@@ -31,7 +37,10 @@ function App() {
                 });
             }
 
-            setCurrentUser(userAuth)
+            setCurrentUser(userAuth);
+
+            // console.log('Collections: ', collection);
+            // addCollectionAndDocuments('collections', collection);
         });
 
         return () => {
