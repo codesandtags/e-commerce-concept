@@ -4,7 +4,7 @@ import './ShopPage.scss';
 import { Route, withRouter } from 'react-router-dom';
 import CollectionsOverview from '../../components/CollectionsOverview/CollectionsOverview';
 import { useDispatch } from 'react-redux';
-import { fetchCollectionsStart } from '../../store/shop/shop.actions';
+import { fetchCollectionsStart, fetchCollectionsStartAsync } from '../../store/shop/shop.actions';
 import CollectionPageContainer from '../Collection/CollectionContainer';
 
 export const ShopPage = ({ match }) => {
@@ -15,7 +15,7 @@ export const ShopPage = ({ match }) => {
         console.log('Calling effect');
         if (!isFetchedCollections) {
             setIsFetchedCollections(true);
-            dispatch(fetchCollectionsStart());
+            dispatch(fetchCollectionsStartAsync());
         }
     }, [isFetchedCollections]);
 
