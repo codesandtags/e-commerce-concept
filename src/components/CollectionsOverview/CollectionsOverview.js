@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectCollectionsForPreview } from '../../store/shop/shop.selector';
 import CollectionPreview from '../CollectionPreview/CollectionPreview';
 
-const CollectionsOverview = ({ title, items }) => {
+const CollectionsOverview = () => {
     const collections = useSelector(selectCollectionsForPreview);
 
     return (

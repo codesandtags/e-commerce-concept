@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import './ShopPage.scss';
 import { Route, withRouter } from 'react-router-dom';
-import CollectionsOverview from '../../components/CollectionsOverview/CollectionsOverview';
 import { useDispatch } from 'react-redux';
-import { fetchCollectionsStart, fetchCollectionsStartAsync } from '../../store/shop/shop.actions';
+import { fetchCollectionsStartAsync } from '../../store/shop/shop.actions';
 import CollectionPageContainer from '../Collection/CollectionContainer';
+import CollectionsOverviewContainer
+    from '../../components/CollectionsOverview/CollectionsOverviewContainer';
 
 export const ShopPage = ({ match }) => {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export const ShopPage = ({ match }) => {
 
     return (
         <div className="shop-page">
-            <Route exact path={`${match.path}`} component={CollectionsOverview}/>
+            <Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
             <Route path={`${match.path}/:collectionId`} component={CollectionPageContainer}/>
         </div>
     );
