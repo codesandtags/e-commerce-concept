@@ -8,11 +8,9 @@ import Header from '../../components/Header/Header';
 import SignInAndSignUp from '../SingInAndSignUp/SignInAndSignUp';
 import { CheckoutPage } from '../Checkout/CheckoutPage';
 
-import {
-    addCollectionAndDocuments,
-    auth,
-    createUserProfileDocument
-} from '../../firebase/firebase.utils';
+import { GlobalStyle } from '../../global.styles';
+
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../../store/user/user.actions';
 import { selectCollectionsForPreview } from '../../store/shop/shop.selector';
@@ -52,6 +50,7 @@ function App() {
     return (
         <HashRouter basename="/">
             <div className="App">
+                <GlobalStyle />
                 <Header/>
                 <Switch>
                     <Route exact path="/" component={HomePage}/>

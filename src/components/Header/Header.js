@@ -11,7 +11,7 @@ import { selectCartHidden } from '../../store/cart/cart.selector';
 import {
     AppLogo,
     HeaderContainer,
-    LogoContainer,
+    LogoContainer, LogoText,
     OptionLink,
     OptionsContainer
 } from './Header.styles';
@@ -46,7 +46,7 @@ const Header = () => {
         <HeaderContainer>
             <LogoContainer to='/'>
                 <AppLogo src={Logo} alt="Clothing Center"/>
-                Clothing Center
+                <LogoText>Clothing Center</LogoText>
             </LogoContainer>
             <OptionsContainer>
                 <OptionLink to='/shop'>SHOP</OptionLink>

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/e-commerce-concept.iml" filepath="$PROJECT_DIR$/.idea/e-commerce-concept.iml" />
       <module fileurl="file://$PROJECT_DIR$/../face-recognition-brain/face-recognition-brain.iml" filepath="$PROJECT_DIR$/../face-recognition-brain/face-recognition-brain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../puppeteer-examples/puppeteer-examples.iml" filepath="$PROJECT_DIR$/../puppeteer-examples/puppeteer-examples.iml" />
     </modules>
   </component>
 </project>
