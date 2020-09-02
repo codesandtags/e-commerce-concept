@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import './ShopPage.scss';
 import { Route, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchCollectionsStartAsync } from '../../store/shop/shop.actions';
 import CollectionPageContainer from '../Collection/CollectionContainer';
 import CollectionsOverviewContainer
     from '../../components/CollectionsOverview/CollectionsOverviewContainer';
+import { fetchCollectionsStart } from '../../store/shop/shop.actions';
 
 export const ShopPage = ({ match }) => {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const ShopPage = ({ match }) => {
         console.log('Calling effect');
         if (!isFetchedCollections) {
             setIsFetchedCollections(true);
-            dispatch(fetchCollectionsStartAsync());
+            dispatch(fetchCollectionsStart());
         }
     }, [isFetchedCollections]);
 

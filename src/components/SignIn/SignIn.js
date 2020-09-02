@@ -1,33 +1,32 @@
 import React, { useState } from 'react';
 
-import './SignIn.scss';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
-import {
-    auth,
-    signInWithGithub,
-    signInWithGoogle
-} from '../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils';
+import { ButtonsBarContainer, SignInContainer, SignInTitle } from './SignIn.styles';
+import { emailSignInStart, googleSignInStart } from '../../store/user/user.actions';
+import { useDispatch } from 'react-redux';
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            await auth.signInWithEmailAndPassword(email, password);
+            dispatch(emailSignInStart({email, password}));
             setEmail('');
             setPassword('');
-        } catch(error) {
+        } catch (error) {
             alert('Upppss wrong email or password');
         }
     };
 
     return (
-        <div className='sign-in'>
-            <h2 className="title">I already have an account</h2>
+        <SignInContainer>
+            <SignInTitle>I already have an account</SignInTitle>
             <span>Sign in with your email and password</span>
 
             <form onSubmit={handleSubmit}>
@@ -47,23 +46,18 @@ const SignIn = () => {
                     label='password'
                     required
                 />
-                <div className="buttons">
+                <ButtonsBarContainer>
                     <CustomButton type='submit'> Sign in </CustomButton>
-                    <CustomButton type='button'
-                                  onClick={signInWithGoogle}
-                                  isGoogleSignIn={true}
+                    <CustomButton
+                        type='button'
+                        onClick={() => dispatch(googleSignInStart())}
+                        isGoogleSignIn
                     >
                         Sign in with Google
                     </CustomButton>
-                    <CustomButton type='button'
-                                  onClick={signInWithGithub}
-                                  isGoogleSignIn={true}
-                    >
-                        Sign in with Github
-                    </CustomButton>
-                </div>
+                </ButtonsBarContainer>
             </form>
-        </div>
+        </SignInContainer>
     );
 }
 

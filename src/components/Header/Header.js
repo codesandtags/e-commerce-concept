@@ -4,7 +4,7 @@ import Logo from '../../assets/images/logo-blue.png';
 
 import { auth } from '../../firebase/firebase.utils';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentUser } from '../../store/user/user.actions';
+import { setCurrentUser, signOutStart } from '../../store/user/user.actions';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
 import { selectCartHidden } from '../../store/cart/cart.selector';
@@ -25,7 +25,7 @@ const Header = () => {
 
     const onSignOut = async () => {
         await auth.signOut();
-        dispatch(setCurrentUser(null));
+        dispatch(signOutStart());
     };
 
     const getSignInLink = () => {
