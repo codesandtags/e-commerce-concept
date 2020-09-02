@@ -4,14 +4,15 @@ import Logo from '../../assets/images/logo-blue.png';
 
 import { auth } from '../../firebase/firebase.utils';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentUser, signOutStart } from '../../store/user/user.actions';
+import { signOutStart } from '../../store/user/user.actions';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
 import { selectCartHidden } from '../../store/cart/cart.selector';
 import {
     AppLogo,
     HeaderContainer,
-    LogoContainer, LogoText,
+    LogoContainer,
+    LogoText,
     OptionLink,
     OptionsContainer
 } from './Header.styles';
@@ -31,7 +32,7 @@ const Header = () => {
     const getSignInLink = () => {
         if (user.currentUser) {
             return (
-                <OptionLink  as='div' onClick={onSignOut}>SIGN OUT</OptionLink>
+                <OptionLink as='div' onClick={onSignOut}>SIGN OUT</OptionLink>
             );
         }
 

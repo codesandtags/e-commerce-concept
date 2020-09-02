@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
-import { auth } from '../../firebase/firebase.utils';
 import { ButtonsBarContainer, SignInContainer, SignInTitle } from './SignIn.styles';
 import { emailSignInStart, googleSignInStart } from '../../store/user/user.actions';
 import { useDispatch } from 'react-redux';
@@ -16,7 +15,7 @@ const SignIn = () => {
         event.preventDefault();
 
         try {
-            dispatch(emailSignInStart({email, password}));
+            dispatch(emailSignInStart({ email, password }));
             setEmail('');
             setPassword('');
         } catch (error) {

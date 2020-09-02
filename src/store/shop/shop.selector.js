@@ -1,8 +1,6 @@
 import memoize from 'lodash.memoize';
 
 export const selectCollections = memoize(state => {
-    console.log('State in Shop => ', state);
-
     return state.shop.collections;
 });
 

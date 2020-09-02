@@ -10,35 +10,19 @@ import { CheckoutPage } from '../Checkout/CheckoutPage';
 
 import { GlobalStyle } from '../../global.styles';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentUser } from '../../store/user/user.actions';
-import { selectCollectionsForPreview } from '../../store/shop/shop.selector';
+import { checkUserSession, setCurrentUser } from '../../store/user/user.actions';
 
 function App() {
     const dispatch = useDispatch();
     const user = useSelector((state) => {
         return state.user;
     });
-    const collection = useSelector(selectCollectionsForPreview);
 
     useEffect(() => {
         const authSubscription = auth.onAuthStateChanged(async userAuth => {
-            if (userAuth) {
-                const userRef = await createUserProfileDocument(userAuth);
-
-                userRef.onSnapshot(snapShot => {
-                    dispatch(setCurrentUser({
-                        id: snapShot.id,
-                        ...snapShot.data()
-                    }), [setCurrentUser])
-                });
-            }
-
-            setCurrentUser(userAuth);
-
-            // console.log('Collections: ', collection);
-            // addCollectionAndDocuments('collections', collection);
+            dispatch(checkUserSession());
         });
 
         return () => {
@@ -50,7 +34,7 @@ function App() {
     return (
         <HashRouter basename="/">
             <div className="App">
-                <GlobalStyle />
+                <GlobalStyle/>
                 <Header/>
                 <Switch>
                     <Route exact path="/" component={HomePage}/>

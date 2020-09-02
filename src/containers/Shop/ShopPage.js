@@ -18,7 +18,7 @@ export const ShopPage = ({ match }) => {
             setIsFetchedCollections(true);
             dispatch(fetchCollectionsStart());
         }
-    }, [isFetchedCollections]);
+    }, [dispatch, isFetchedCollections]);
 
     return (
         <div className="shop-page">
