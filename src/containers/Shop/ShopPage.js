@@ -1,30 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 
-import './ShopPage.scss';
 import { Route, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import CollectionPageContainer from '../Collection/CollectionContainer';
-import CollectionsOverviewContainer
-    from '../../components/CollectionsOverview/CollectionsOverviewContainer';
 import { fetchCollectionsStart } from '../../store/shop/shop.actions';
+import { ShopPageContainer } from './ShopPage.styles';
+import Spinner from '../../components/Spinner/Spinner';
+
+const CollectionPageContainer = lazy(() => import('../Collection/CollectionContainer'))
+const CollectionsOverviewContainer = lazy(() => import('../../components/CollectionsOverview/CollectionsOverviewContainer'));
 
 export const ShopPage = ({ match }) => {
     const dispatch = useDispatch();
-    const [isFetchedCollections, setIsFetchedCollections] = useState(false);
 
     useEffect(() => {
-        console.log('Calling effect');
-        if (!isFetchedCollections) {
-            setIsFetchedCollections(true);
-            dispatch(fetchCollectionsStart());
-        }
-    }, [dispatch, isFetchedCollections]);
+        dispatch(fetchCollectionsStart());
+    }, [dispatch]);
 
     return (
-        <div className="shop-page">
-            <Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
-            <Route path={`${match.path}/:collectionId`} component={CollectionPageContainer}/>
-        </div>
+        <ShopPageContainer>
+            <Suspense fallback={<Spinner />}>
+                <div className="shop-page">
+                    <Route
+                        exact
+                        path={`${match.path}`}
+                        component={CollectionsOverviewContainer}/>
+                    <Route
+                        path={`${match.path}/:collectionId`}
+                        component={CollectionPageContainer}/>
+                </div>
+            </Suspense>
+        </ShopPageContainer>
     );
 }
 
