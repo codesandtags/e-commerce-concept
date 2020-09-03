@@ -2,8 +2,6 @@
   "background_color": "#333333",
   "description": "A nice e-commerce concept using React and its ecosystem, Stripe and other cool things.",
   "display": "standalone",
-  "gcm_sender_id": "49625052041",
-  "gcm_user_visible_only": true,
   "icons": [
     {
       "src": "./logo192.png",
@@ -14,11 +12,10 @@
       "src": "./logo512.png",
       "sizes": "512x512",
       "type": "image/png"
-    },
+    }
   ],
   "name": "Clothing Center",
   "short_name": "Clothing Center",
-  "start_url": "/",
-  "theme_color": "#ffffff",
-  "scope": "/"
+  "start_url": ".",
+  "theme_color": "#ffffff"
 }
