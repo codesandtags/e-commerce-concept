@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.scss';
 import Header from '../../components/Header/Header';
@@ -34,24 +34,22 @@ const App = () => {
     }, [setCurrentUser]);
 
     return (
-        <HashRouter basename="/">
-            <div className="App">
-                <GlobalStyle/>
-                <Header/>
-                <Switch>
-                    <ErrorBoundary>
-                        <Suspense fallback={<Spinner/>}>
-                            <Route exact path="/" component={HomePage}/>
-                            <Route path="/shop" component={ShopPage}/>
-                            <Route exact path='/checkout' component={CheckoutPage}/>
-                            <Route exact path="/sign-in" render={() => {
-                                return (user.currentUser) ? <Redirect to="/"/> : <SignInAndSignUp/>
-                            }}/>
-                        </Suspense>
-                    </ErrorBoundary>
-                </Switch>
-            </div>
-        </HashRouter>
+        <div className="App">
+            <GlobalStyle/>
+            <Header/>
+            <Switch>
+                <ErrorBoundary>
+                    <Suspense fallback={<Spinner/>}>
+                        <Route exact path="/" component={HomePage}/>
+                        <Route path="/shop" component={ShopPage}/>
+                        <Route exact path='/checkout' component={CheckoutPage}/>
+                        <Route exact path="/sign-in" render={() => {
+                            return (user.currentUser) ? <Redirect to="/"/> : <SignInAndSignUp/>
+                        }}/>
+                    </Suspense>
+                </ErrorBoundary>
+            </Switch>
+        </div>
     );
 }
 
